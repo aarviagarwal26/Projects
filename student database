@@ -1,0 +1,47 @@
+#aarvi agarwal
+#12.7.22
+#student database
+#create a program that adds students to a database with their name and email
+#names dont have to be the same, just the order
+
+students = {}
+
+def main():
+  """Add students until the user chooses to stop."""
+  print("Welcome to the NCHS Student Database!")
+  choice = input("Would you like to add a new student? (y/n) ")
+  while choice.lower() == "y":
+    first, last = getName()
+    email = generateEmail(first, last)
+    addStudent(first,last,email)
+    print("The students name is {} {}.".format(first,last))
+    print()
+    choice = input("Would you like to add a new student? (y/n) ")
+  print(students)
+  newSchoolYear()
+  print(students)
+
+def newSchoolYear():
+  global students
+  students = {}
+  
+def getName():
+  """Ask for and return a students first and last name."""
+  first = input("What is the student's first name? ")
+  last = input("What is the student's last name? ")
+  return first, last
+
+def generateEmail(first,last):
+  """Return an email with the format first initial, last name @stu.naperville203.org"""
+  first = first[0]
+  email = first + last + "@stu.naperville203.org"
+  count = 1
+  while email in students:
+    email = first + last + str(count) + "@stu.naperville203.org"
+    count+=1
+  return email
+
+def addStudent(first,last,email):
+  """Add a student to the dictionary."""
+  students[email] = first + " " + last
+main()
