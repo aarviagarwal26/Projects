@@ -1,0 +1,41 @@
+#Aarvi Agarwal
+#10/19/22
+#Movie Characters
+
+#Instructions:
+#Print the list of character names and actors in one loop.
+#Display the length of the characters tuple
+#Check for Tom Hiddleston in the tuple of actors
+#Pick a character and display who played that character by indexing
+#Slice or index the characters tuple to display two non-consecutive characters
+
+#Example Run:
+#Indiana Jones was played by Harrison Ford.
+#Princess Leia was played by Carrie Fisher.
+#Vito Corleone was played by Marlon Brandon.
+
+#There are 3 characters.
+
+#Carrie Fisher is one of the actors.
+
+#Indiana Jones was played by Harrison Ford.
+
+#Indiana Jones, Vito Corleone
+
+characters = ("Venom","Peter Parker","Loki Laufeyson")
+actors = ("Tom Hardy","Tom Holland","Tom Hiddleston")
+
+for i in range(len(characters)):
+  print("The character {} was played by the actor {}.".format(characters[i],actors[i]))
+print()
+print("There are", len(characters), "characters.")
+print()
+
+if "Tom Hiddleston" in actors:
+  print("The actor Tom Hiddleston is in this list.")
+else:
+  print("The actor Tom Hiddleston isn't in this list.")
+print()
+print("Loki Laufeyson was played by {}".format(actors[i]))
+print()
+print(characters[0:3:2])
