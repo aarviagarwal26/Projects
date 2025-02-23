@@ -1,0 +1,78 @@
+
+import RPi.GPIO as GPIO
+import time
+
+GPIO.setmode(GPIO.BCM)
+
+GPIO.setup(18, GPIO.IN, pull_up_down = GPIO.PUD_DOWN)
+
+#pins
+#blue
+GPIO.setup(26,GPIO.OUT)
+
+#left to right
+#white1
+GPIO.setup(19, GPIO.OUT)
+#white2
+GPIO.setup(13, GPIO.OUT)
+#white3
+GPIO.setup(6, GPIO.OUT)
+#white4
+GPIO.setup(5, GPIO.OUT)
+#white5
+GPIO.setup(22, GPIO.OUT)
+#white6
+GPIO.setup(27, GPIO.OUT)
+#white7
+GPIO.setup(17, GPIO.OUT)
+#white8
+GPIO.setup(4, GPIO.OUT)
+
+
+GPIO.output(26, False)
+GPIO.output(19, False)
+GPIO.output(13, False)
+GPIO.output(6, False)
+GPIO.output(5, False)
+GPIO.output(22, False)
+GPIO.output(27, False)
+GPIO.output(17, False)
+GPIO.output(4, False)
+
+#cyclone game
+
+currentled = 0
+speed = 0.2
+
+while (True):
+  inputvalue = GPIO.input(18)
+  print(inputvalue)
+  input("Press enter to start the game!")
+
+
+  while True:
+    #turn on current led
+    GPIO.output(currentled, True)
+    #wait for bounce spped
+    time.sleep(speed)
+    #turn off current led
+    GPIO.output(currentled, False)
+    #see if right button was pressed
+    if inputvalue == 1:
+      break
+    #switch up to next led
+    currentled = currentled + 1
+    #determine win or lost
+    if currentled == 4:
+      print("You win!")
+      speed *=0.8
+    else:
+      print("You Lost :(")
+      #reset speed
+      speed = 0.2
+
+    #play again
+    playagain = input("Play again? (y/n)")
+    if playagain == "y":
+      break
+  
