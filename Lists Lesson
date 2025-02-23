@@ -1,0 +1,52 @@
+#aarvi
+#11/2/22
+#Lists lesson
+
+#Items in a tuple are referred to as elements
+cities = ["chicago","NYC","Rio"]
+#indexnums= 0         1      2
+
+#print every other element
+
+for i in range(0,len(cities),2):
+  print(cities[i])
+
+
+print()
+
+#are lists mutable? 
+cities[1] = "london" #They ARE!
+
+#parallel lists
+#lists that are somehow related
+#parallel lists MUST BE the same lenght (same number of elements)
+countries = ["United States","China","Mexico"]
+population=[332000000, 1400000000, 129000000]
+#indexnum =    0             1        2
+
+for i in range(len(countries)):
+  print("{} has a population of {:,}.".format(countries[i],population[i]))
+
+#add elements to a tuple
+
+print()
+
+cities+=["paris","london"] #adds one character at a time
+cities.append("london") #append adds the element to the end of the line
+cities+["Tokyo",] #a comma is necessary when adding just one element
+print(cities)
+
+#adding elements to a list using insert
+countries.insert(1, "Ukraine") #must add to BOTH parallel lists
+population.insert(1, 44000000)
+#see if an element is in the tuple (using the in operator)
+print()
+if "paris" in cities:
+  print("The city of paris is in the list of cities")
+else:
+  print("The city of paris is not in the list of cities")
+print()
+#find the index number of a tuple element
+print("Chicago is at index "+str(cities.index("chicago")))
+
+
