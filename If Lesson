@@ -1,0 +1,59 @@
+#Aarvi Agarwal
+#If statements and Random Numbers
+#9/16/22
+
+#The random module
+import random
+
+#randrange produces a number between 0 and 9.
+rndNum = random.randrange(10)
+print(rndNum)
+
+# Generate a random number between 1 and 10
+randNum = random.randrange(10)+1
+print(randNum)
+
+#Doesn't print the second number
+randNum = random.randrange(1,11)
+print(randNum)
+
+#Relational Operators
+#Used to compare two values
+print("John"<"Jon")
+#Prints True
+#Boolean Value =  either true or false
+
+name  = "Jon"
+# one equal sign are for variables
+#two equal signs are for comparing
+print(name=="Jon") #Prints true
+print(1>5) #Prints False
+#In python, true and false are uppercase
+
+# name == "Jon" is the condition
+#the tabbed code will run if the condition is True.
+if name == "Jon":
+  print("Your name is Jon.")
+  print("That's a fine name!")
+print("I am thinking of a number between 1 and 5.")
+guess = int(input("Enter your guess: "))
+correct = random.randrange(1,6)
+
+if guess == correct:
+  print("You got the number correct!")
+elif guess > correct:
+  print("The number you guessed is too big.")
+#else statements runs if any if and/or elif statements above it don't apply
+else:
+  print("The number you printed is too small.")
+
+score = int(input("What was your score on the quiz?"))
+if score > 59:
+  print("You're a failure.")
+elif score > 69:
+  print("You're still a failure.")
+elif score > 79:
+  print("OMG. WHY ARE YOU SO DUMB?")
+elif score > 89:
+  print("Yay. You are on the borderline of not getting whooped.")
+
