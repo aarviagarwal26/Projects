@@ -1,0 +1,61 @@
+#Aarvi Agarwal
+
+#1/19/23
+
+#Weekly Pay Program
+
+
+def input_data():
+  """Asks the user info needed"""
+  
+  user_name = input("What is your name?: ")
+  hours = input("How many hours did you work? Press enter if its 40: ")
+  #how to use this
+  pay_rate = input("What is your pay rate? Press enter if its standard: $")
+
+  if hours == "":
+    hours = 40
+  else:
+    hours = int(hours)
+
+  if pay_rate == "":
+    pay_rate = 11
+  else:
+    pay_rate = int(pay_rate)
+
+  return user_name, hours, pay_rate
+  
+
+def calc_pay(hours, pay_rate):
+  """Calculates the pay"""
+  
+  if hours > 40:
+    hours = (hours-40)*1.5 + 40
+
+  wp = hours*pay_rate
+
+
+  return wp
+
+def display(user_name, hours, pay_rate, wp):
+  """Displays the information"""
+  
+  print("Your name:", user_name)
+  print("Hours worked:", hours)
+  print("Pay_rate:", pay_rate)
+  print("Gross pay", round(wp, 2))
+
+def main():
+  "Runs the program (again if the user wants)"
+
+  again = "y"
+
+  while again == "y":
+    user_name, hours, pay_rate = input_data()
+    wp = calc_pay(hours, pay_rate)
+    display(user_name, hours, pay_rate, wp)
+
+    again = input("Would you like to run the program again? (y/n) ").lower()
+
+main()
+  
