@@ -1,0 +1,64 @@
+# Aarvi Agarwal
+#1/18/24
+#this code is able to compute the monthly payment on a loan
+
+
+
+def input_data():
+  """Asks the user for info about themself"""
+  user_name = input("What is your name?")
+  p = int(input("What is the cost of the car you purchased? (press enter to skip) $")) 
+  #car payment
+  r = float(input("What is the annual percentage rate? ")) #percent rate
+  n = int(input("How many months will you be paying for the loan (press enter to skip) ? ")) 
+  #number of months
+
+  if r == "":
+    r = 4.5
+
+  if n == "":
+    n = 60
+
+  return p, r, n, user_name
+
+
+def calc_data(r, n, p):
+  """Calculates the amount of monthly payment"""
+  R = r/1200
+  M = p*R*(1+R)**n/(((1+R)**n) - 1)
+
+  return R, M, p, n
+
+def display_data(user_name, p, r, n, M):
+  print(user_name)
+  print("Car Price: $", p)
+  print("Rate: ", r, "%")
+  print("Years of Loan: ", n)
+  print("Monthly Payment: $", round(M, 2))
+
+
+def main():
+  """Runs the program"""
+
+  again = "y"
+  while again == "y":
+    p, r, n, user_name = input_data()
+    R, M, p, n = calc_data(r, n, p)
+    display_data(user_name, p, r, n, M)
+    again = input("Would you like to continue? (y/n)").lower()
+
+main()
+  
+  
+ # user_continue = False
+ # while user_continue == True:
+  #  input_data()
+  #  calc_data(r, n, p)
+  #  display_data(user_name, p, r, n, M)
+   # user_continue = input("Would you like to continue? (y/n)").lower()
+   # if user_continue == "y":
+   #   user_continue = True
+   # else:
+    #  user_continue = False
+   # 
+    
