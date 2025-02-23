@@ -1,0 +1,40 @@
+# aarvi 
+# 10/11/22
+# for loops lessons
+
+# Creates a range from 0-25 (exclusive; not including 25)
+print(range(25))
+
+#print 0-25
+
+#iterate means to loop through
+# i is a sentry variable
+for i in range(26):
+  print(i, end=",")
+print()
+
+# print numbers 50-100
+# i is also a counter variable
+
+for i in range (50,101):
+  print(i, end=",")
+
+print ()
+# print all the odd numbers from 1 - 100
+#third argument makes the i go up by whatever the value is
+for i in range (1, 100, 10):
+  print(i, end=",")
+
+print()
+# print the numbers 100 to 1 counting down
+
+for i in range (101,0,-1):
+  print(i, end=",")
+
+# print a sentence a 100 times
+
+for i in range (100):
+  print("Hello.")
+
+for i in range (0,5):
+  print("")
