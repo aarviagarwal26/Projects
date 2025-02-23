@@ -1,0 +1,54 @@
+#Aarvi
+#10/13/22
+#string slicing lesson
+
+quote = "Squeeze lemons with the intensity of killing somone."
+fullName = "George Michael Bush"
+          #0123456789...
+          #Index Numbers (location of a character in a string)
+
+print(fullName[4]) #prints out the fifth character (g)
+print(fullName[12]) #prints out the 13th character (e)
+
+#print the lenght of the quote
+print("Your quote is {} characters long.".format(len(quote)))
+
+#print out all of the vowels in the quote
+for i in range(len(quote)):
+  character = quote[i] #The current character from the quote
+  if character in "aeiou":
+    print(character, end=", ")
+print()
+#different method without using range
+#charcter will iterate through each character in the quote
+for character in quote:
+  if character in "aeiou":
+    print(character, end=", ")
+
+#print the person's middle name
+print()
+print(fullName[7:14])
+
+#Find the first and second space in the name
+space1 = fullName.index(" ") #Return the indux number of the first name in the fullName variable
+space2 =  fullName.index(" ", space1 +1) 
+print(space1, space2)
+
+#Print the first, middle, and last names
+print("First name: "+fullName[:space1])
+print("Middle Name: "+fullName[space1 +1:space2])
+print("Last name: "+fullName[space2+1:])
+print()
+
+#ADDING A SECOND : LETS YOU SKip characters or count down
+print(fullName[3:14:2])
+print(fullName[14:3:-1])
+
+#count how many times a given character appears in a quote
+count = 0
+letter = input("Please enter the letter you want to find:")
+for i in range(len(quote)):
+  if letter == quote[i]: #increase the count if the current letter (quote[1]) is equal to the letter entered
+    count +=1
+
+print("The character appeared {} appeared {} times in the quote.".format(letter,count))
