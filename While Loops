@@ -1,0 +1,39 @@
+#Aarvi Agarwal
+#9/26/22
+#While Loops Program
+
+#numLemons is a sentry variable
+#A sentry variable determines when a loop ends
+numLemons = int(input("How many lemons would you like to order?"))
+
+orders = 0 #Counter variable - counts number of orders)
+total = 0  #Accumulator variable - collects total number of lemons
+
+numLemons = int(input("How many lemons would you like to order? (Enter 0 to stop)"))
+
+#CODE CONTINUES TO RUN UNTIL CONDITION BECOMES FALSE
+#create a loop condition using the sentry variable
+while numLemons > 0:
+  orders += 1 #shortcut for orders = orders + 1
+  total += numLemons #adding the number of lemons ordered to the total.
+  numLemons = int(input("How many lemons would you like to order? (Enter 0 to stop)"))
+
+  #You MUST update the sentry variable in the loop
+
+print("There were a total of {} lemons ordered.".format(total))
+print("There was an average of {:,.2f} lemons ordered per order.".format(total/orders))
+print()
+choice = input("Would you like to order some lemons? (y/n)")
+total = 0
+
+while choice.lower() == "y":
+  numLemons = int(input("How many lemons would you like to order?"))
+  total += numLemons
+  choice = input("Would you like to order some more lemons? (y/n)")
+  
+print("There were a total of {} lemons ordered.".format(total))
+
+start = 1 #This will result in an infinite loop becuase start will never = 10
+while start <= 10:
+  print("{} x 2 = {}".format(start, start *2))
+  start += 2
