@@ -1,0 +1,57 @@
+
+"""
+File: jumble3.py
+Author: Mrs. Hopkins
+Assignment: Ch 6 Project 5, page 201
+Description: This program rewrites the jumble program from Chapter 4 so it
+is separated into functions according to the requirements on page 201. The
+main function is given on page 202.
+"""
+import random
+
+def instructions():
+  """Display instructions."""
+  print(
+"""
+Welcome to Word Jumble!
+Unscramble the letters to make a word.
+(Press the enter key at the prompt to quit.)
+""")
+  
+def random_word():
+  """Return random word."""
+  words = ["python", "jumble", "easy", "difficult" "answer", "xylophone"]
+  word = random.choice(words)
+  return word
+
+def jumble(word):
+  """Return jumbled version of word passed in."""
+  jumbled = ""
+  while word:
+    position = random.randrange(len(word))
+    jumbled += word[position]
+    word = word[:position] + word[(position + 1):] #wait what
+  return jumbled
+
+def play(word, jumble):
+  """Get the player's guess until correct or quits."""
+  print ("The jumble is:", jumble)
+  guess = input("\nYour guess: ").lower()
+  while (guess != word) :
+    print ("Sorry, that's not it.")
+    guess = input("Your guess: ").lower()
+    
+  print ("That's it! You guessed it!\n")
+  print ("Thanks for playing.")
+
+def main():
+  instructions()
+  the_word = random_word()
+  the_jumble = jumble(the_word)
+  play(the_word, the_jumble)
+  input("\n\nPress the enter key to exit.")
+
+main()
+
+
+
