@@ -1,0 +1,101 @@
+class player(object):
+    def __init__(self,name = ""):
+        self.name = name
+        self.roundpoint = 0
+        self.totalpoint = 0
+    def givename(self,value):
+      self.name = value
+    def pointadd(self,value):
+        self.roundpoint = self.roundpoint + value
+    def pointreduce(self,value):
+        self.roundpoint = self.roundpoint - value
+    def getroundpoint(self):
+        return self.roundpoint
+    def getallpoint(self):
+      return self.totalpoint
+    def roundend(self):
+        self.totalpoint = self.totalpoint + self.roundpoint
+        self.roundpoint = 0
+    def getname(self):
+      return self.name
+    def __str__(self):
+        desc = "Name " + self.name + "\n" + "Point in current round: " + str(self.roundpoint) + "\n" + "Current total point: " + str(self.totalpoint)
+        return desc
+
+  
+
+#Bowen Fu
+#3/21/2022
+import player
+import die
+playernum = input("How many players are playing? ")
+while playernum.isdigit() == False:
+  print("Invalid input!")
+  playernum = input("How many players are playing? ")
+roundcount = input("How many rounds will be played? ")
+while roundcount.isdigit() == False:
+  print("Invalid input!")
+  roundcount = input("How many rounds will be played? ")
+players = []
+for i in range(0,int(playernum)):
+  players.append(player.player())
+  name = input("What is the name of player #" + str(i + 1) + "? ")
+  while name.isspace() == True or name == "":
+    print("Invalid input!")
+    name = input("What is the name of player #" + str(i + 1) + "? ")
+  players[i].givename(name) 
+dies = []
+for i in range(0,5):
+  dies.append(die.die())
+  
+def play(player):
+  for i in range(0,len(dies)):
+    dies[i].enable()
+  rollresult=[""]
+  while bool(rollresult) != False:
+    rollresult = []
+    b = 0
+    z = 0
+    for i in range(0,5):
+      temp = dies[i].roll()
+      rollresult.append(temp)
+      if rollresult[i] == 5 or rollresult[i] == 2:
+        dies[i].disable()
+        z += 1
+      if rollresult[i] == "Disabled":
+        b += 1        
+    for i in range(0,b):
+      rollresult.remove("Disabled")    
+    if 2 not in rollresult and 5 not in rollresult and bool(rollresult) != False:
+      print("Roll:")
+      print(str(rollresult).ljust(20).replace("[","").replace("]",""),end = "")
+      print(player.getname() + " scored " + str(sum(rollresult)))
+      player.pointadd(sum(rollresult))     
+    elif bool(rollresult) == False:
+      print("\n"+player.getname() + " ran out of dice")
+    else:
+      print("Roll:")
+      print(str(rollresult).ljust(20).replace("[","").replace("]",""),end = "")
+      print(str(z) + " die is stuck in the Mud, no Score")
+  print(player.getname() + " won " + str(player.getroundpoint()) + " points this round")
+  player.roundend()
+  print(player.getname() + " has a total score of " + str(player.getallpoint()) + "")
+for i in range(0,int(roundcount)):
+  for n in range(0,int(playernum)):
+    print("\n----------------Round: " + str(i+1) + "  Current Player: " + players[n].getname() + "----------------\n")
+    play(players[n])
+print("\n----------------Game Over----------------\n")
+print()
+print("Rankings: \n")
+finalpts = {}
+names = []
+for i in range(0,len(players)):
+  finalpts[players[i].getallpoint()] = players[i].getname()
+  names.append(players[i].getname())
+longest = len(max(names)) + 3
+points = list(finalpts.keys())
+points.sort(reverse = True)
+for i in range(0,len(points)):
+  print(str(i+1) + ":" + finalpts[points[i]].ljust(longest) + str(points[i]))
+print()
+print("Player " + finalpts[points[0]] + " is the winner! ")
