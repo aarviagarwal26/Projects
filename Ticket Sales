@@ -1,0 +1,24 @@
+# Aarvi Agarwal 
+# 9/1/22
+# Ticket Sales
+# 1. Ask the user the name of the event
+# 2. Ask the user the cost of a single ticket for the event
+# 3. Ask the user how many tickets they want
+# 4. Calculate the total cost by multiplying cost * number of tickets
+# 5. Print out the total cost
+
+# step 1:
+event = input("What is the name of the event?")
+
+#Step 2:
+#Float means decimal places. Integer means whole numbers. 
+cost =  float(input("How much does a ticket for the event cost?"))
+
+#Step 3:
+tickets = int(input("How many tickets are you buying?"))
+
+#Step 4:
+totalCost = cost * tickets
+
+#Step 5:
+print("The cost to attend {} is ${:.2f}".format(event,totalCost))
