@@ -1,0 +1,37 @@
+#Aarvi Agarwal
+#11/3/22
+#Practice Program - CTE Department
+#Kate helped me with the code for removing a teacher through an input from the user
+#Kate also helped me with the for loop and the counter variable
+
+teachers = ["Epstein","Hayes","Hicks","Miller","Neubauer"]
+classes = ["computer programming 1","ap computer science A","accounting","web design","business law"]
+
+if "Miller" in teachers:
+  print("Dr. Miller is a teacher at NCHS! (OMG NO WAY)")
+
+print(teachers[-3:])
+
+
+teachers[3]="Aarvi"
+
+teachers.append("Dunn")
+teachers.append("Fied")
+teachers.append("King")
+teachers.append("Thompson")
+
+classes.append("Graphics")
+classes.append("Auto Repair")
+classes.append("Geometry in Construction")
+classes.append("Electronics")
+
+teacher = input("Which teacher is going on sabbatical? Please enter their name: ")
+
+i = teachers.index(teacher)
+teachers.remove(teachers[i])
+classes.remove(classes[i])
+
+a=0
+for i in teachers:
+  print("{} teaches {}".format(i,classes[a]))
+  a+=1
