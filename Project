@@ -1,0 +1,74 @@
+# Jacob Breeden
+#Aarvi Agarwal
+#partner 3 name
+# all comunications goes here
+
+# I'm done with my part if anything errors out based on my part let me know
+
+
+#------------------------------------------------------------------------------
+
+
+#------------------------------------------------------------------------------
+
+# Input Scope
+def inputs():
+    '''Asks the user for the info of the invoice
+    Variabe List:
+    ans: amount of seperate items
+    return values:
+    name: The companies name
+    tax: the sales tax
+    items: list of the names of the item
+    prices: list of the prices for the items
+    quantities: list of the quantities if the items'''
+    items = []
+    prices = []
+    quantities = []
+    name = "Store Name"
+    tax = 5 / 100
+    ans = int(input("How many items do you wish to input? "))
+    for i in range(ans):
+        item = input("What is the item you would like to buy? ")
+        price = float(input("What is the price of that item? "))
+        quantity = int(input("How many would you like to get of this item? "))
+        items.append(item)
+        prices.append(price)
+        quantities.append(quantity)
+    return name, tax, items, prices, quantities\
+
+#Aarvi's part:
+def calculate(quantities, prices, tax):
+  """Calculates the price, amount, subtotal, and total (with tax)"""
+  amount = []
+  for i in range(len(quantities)):
+    amount.append(prices[i]*quantities[i])
+  subtotal = sum(amount)
+  total_tax = subtotal*tax
+  total = total_tax+subtotal
+  return amount, subtotal, total_tax, total
+
+
+# Main Scope
+def main():
+    print ("Welcome to the Invoice Program!\n\n")
+    # lists of items, quantities, prices from inputs
+    # lists of amounts from calculate
+    # name is name of store
+    # tax is a float of sales tas (.10 equals 10%)
+    # subtotal, toataltax finaltotal are variables from calculate
+
+    name, items, quantities, prices, tax = inputs()
+    amounts, subtotal, total_tax, total = calculate(quantities, prices, tax)
+
+    display(name, items, quantities, prices, amounts, subtotal, totaltax, total_tax)
+
+    input("\n\nPress enter to exit.")
+
+
+
+
+
+
+
+main()
