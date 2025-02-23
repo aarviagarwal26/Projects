@@ -1,0 +1,26 @@
+#Aarvi Agarwal
+#9/27/22
+#Counting the Votes
+
+#Ask the user to input the number of votes in a single district for your candidate or -1 if they have entered all of the districts. 
+#Use a while loop to repeat the process.
+#Add an accumulator variable to keep track of the total number of votes.
+#Add a counter variable to count the number of districts entered.
+#Display the total number of votes the candidate received.
+#Calculate and display the average number of votes per district for your candidate.
+
+
+votes = int(input("How many votes in District 1?"))
+district = 1
+vtotal = 0
+
+while votes > 0:
+  district += 1
+  vtotal += votes
+  votes = int(input("\nHow many votes were recieved in district {}? (Enter -1 to exit.)".format(district)))
+
+vaverage =vtotal / (district - 1)
+vaveragef = "{:,.2f}".format(vaverage)
+
+print()
+print("Your candidate received a total of",vtotal,  "votes, which is an average of", vaveragef, "votes per district.")
