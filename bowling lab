@@ -1,0 +1,42 @@
+#Aarvi Agarwal
+#Bowling Lab - calculate total score for a series of 3 games and the average of the series
+#1/12/24
+
+
+
+
+#asks user for data related to the game
+def inputdata():
+  """gathers user data in a list and returns the list"""
+  games = int(input("How many games did you bowl? "))
+  average = int(input("What is your average score? "))
+  scores = []
+  for i in range(games):
+    score = int(input("What was your score for game #" + str(i+1) + "? "))
+    scores.append(score)
+  games1 = [games, average, scores]
+  return (games, average, scores, games1)
+
+#calculates the total score for the series of games
+def calc_average(games, scores):
+  """calculates the average of scores in list and returns average"""
+  """displays the date in a nice format"""
+  if games == 3:
+    totalscore = sum(scores)
+    averagescore = totalscore/3
+    return totalscore, averagescore
+  elif games == 2:
+    totalscore = sum(scores)
+    averagescore = totalscore/2
+    totalscore1 = (totalscore+averagescore)/2
+    return totalscore, averagescore, totalscore1
+
+def display(scores):
+  print("Game\t\t\tScore")
+  print("Game1\t\t\t" + str(scores[0]))
+
+
+def main(scores):
+  mgames=[]
+  mgames = inputdata()
+  display(scores)
