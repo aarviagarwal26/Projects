@@ -1,0 +1,86 @@
+# Aarvi Agarwal
+# December 2, 2022
+# Everdine's Program
+# This program will calculate the total for an order of grilled cheese sandwiches from Everdine's
+# 1. Store the customer's name
+# 2. Store the cost of a drink, chips, and sandwich
+# 3. Set the total cost to 0
+# 4. Print the Everdine's menu
+# 5. Ask the user how many sandwiches they want to order
+# 6. Ask the user what sandwich they want for their order
+# 7. If the users wants chips with their order, add the chip cost to the total
+# 8. If the user wants a drink with their order, add the drink cost to the total
+# 9. Repeat steps 6-8 from 0 up to the number of sandwiches ordered
+# 10. Multiply the number of sandwiches ordered by the sandwich cost and add it to the total
+# 11. If the customer's name is Eddie and they ordered an Eddie Mack & Cheese, they get it for free
+# 12. Multiply the tax rate (1.75%) times the total to figure out the amount of tax owed
+# 13. Add the tax owed to the total and output the total amount for the order
+
+def main():
+  print ("Welcome to the Everdine's Platter Program!\n")
+
+  #call the main function and put the choice in count
+  count = menu()
+
+  totalcost(count)
+
+def menu():
+  # Steps 3, 4, and 5
+  return int(input ("""The All American.............1
+  The Usual Suspect............2
+  Mostly Maui Wowie............3
+  Buffalo Chicken..............4
+  Tuna Turner..................5
+  '81 Caprice Classic..........6
+  Spicy Smokey Cheesy Bacon....7
+  Turkey Meltdown..............8
+  Homemade Sloppy Joan.........9
+  Eddie Mack & Cheese..........10
+  How many sandwiches would you like to order? """))
+
+def totalcost(count):
+
+    name = input("What is your name? ")
+  
+    # Steps 1 and 2
+    total = 0.00
+    chipsCost = 1.50
+    drinkCost = 1.25
+    sandwichCost = 8.25
+    eddie = False
+
+
+  # Loop through the sandwich orders (Step 9)
+    for i in range(count):
+    # Step 6
+      sandwich = input("Enter a number for the sandwich you want: ")
+  
+    # Determine if they ordered an Eddie Mack & Cheese and their name contains "Eddie"
+    if sandwich == "10" and "eddie" in name.lower():
+      eddie = True
+    
+    # Step 7
+    chips = input("Would you like chips with that sandwich (y/n)? ")
+    if chips.lower() == "y":
+      total += chipsCost
+  
+    # Step 8
+    drink = input("Would you like a drink with that sandwich (y/n)? ")
+    if drink.lower() == "y":
+      total += drinkCost
+  
+  # Step 10
+    subtotal = total + sandwichCost * count
+  
+  # Step 11 - Subtract the cost of one sandwich from the subtotal if the customer's name contains "Eddie"
+    if eddie == True:
+      subtotal -= sandwichCost
+  
+  # Step 12 (Tax is 1.75%)
+    tax = subtotal * .0175
+  
+  # Step 13
+    total = subtotal + tax
+    print("Your total is ${:.2f}. Thank you!".format(total))
+
+main()
